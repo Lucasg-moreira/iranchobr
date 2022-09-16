@@ -3,6 +3,7 @@ import express from "express";
 
 import Pessoas from "./models/Pessoas.js";
 import Animais from './models/Animais.js'
+import Lote from "./models/Lote.js";
 import AnimalLote from "./models/AnimalLote.js";
 
 import routesPessoas from './routes/routesPessoas.js'
