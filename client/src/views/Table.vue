@@ -72,8 +72,6 @@ export default {
   },
 }
 </script>
-
-
 <style>
 table,
 td {
