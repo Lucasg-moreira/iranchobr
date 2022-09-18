@@ -1,21 +1,22 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Table from '@/components/Table'
+import Vue from "vue";
+import Router from "vue-router";
 
-Vue.use(Router)
+import Table from "@/views/Table";
+import NewPersonForm from "@/components/NewPersonForm";
+
+Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'Table',
-      component: Table
+      path: "/",
+      name: "Table",
+      component: Table,
     },
     {
-      path: '/padrao',
-      name: 'HelloWorld',
-      component: HelloWorld
+      path: "/pessoas",
+      name: "NewPersonForm",
+      component: () => import('../components/NewPersonForm.vue'),
     }
   ]
-})
+});

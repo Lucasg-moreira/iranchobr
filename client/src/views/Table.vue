@@ -1,7 +1,9 @@
 <template>
   <div>
-    <button>New</button>
+    <button @click="addPeoples()"><router-link to="/pessoas">Add</router-link>
+ </button>
     <h1>Tabela</h1>
+    <router-view/>
     <table class="table">
       <thead>
         <tr>
@@ -38,6 +40,11 @@ export default {
   data() {
     return {
       data: []
+    }
+  },
+  methods: {
+    addPeoples() {
+
     }
   },
   async created() {
