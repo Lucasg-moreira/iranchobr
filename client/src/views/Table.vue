@@ -1,8 +1,8 @@
 <template>
   <div>
     <button @click="addPeoples()">
-        <router-link to="/pessoas">Add</router-link>
-      </button>
+      <router-link to="/pessoas">Add</router-link>
+    </button>
     <div v-if="data.length > 0">
       <h1>Tabela</h1>
       <router-view />
@@ -26,7 +26,7 @@
             <td>{{ pessoa.sexo }}</td>
             <td>{{ pessoa.ic_ativo }}</td>
             <div>
-              <button>Details</button>
+              <button @click="shareData(pessoa.id)">Add Animais</button>
               <button>Edit</button>
               <button @click="remove(pessoa.id)">Remove</button>
             </div>
@@ -42,6 +42,7 @@
 
 <script>
 import axios from 'axios';
+import AddAnimalsVue from '../components/AddAnimals.vue'
 let back_end_api = "http://localhost:3000"
 
 export default {
@@ -51,12 +52,15 @@ export default {
       id: null
     }
   },
+  components: {
+    AddAnimalsVue
+  },
   created() {
     this.getPessoas();
   },
   methods: {
     async remove(id) {
-     await axios.delete(`${back_end_api}/pessoas/${id}/remove`)
+      await axios.delete(`${back_end_api}/pessoas/${id}/remove`)
       this.getPessoas();
     },
     async getPessoas() {
@@ -68,6 +72,11 @@ export default {
         .catch(error => {
           console.log(error)
         })
+    },
+    shareData(id) {
+      this.$router.push({name: "AddAnimals", params: {
+        user_id: id
+      }})
     }
   },
 }

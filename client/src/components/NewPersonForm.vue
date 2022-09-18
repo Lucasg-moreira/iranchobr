@@ -1,33 +1,35 @@
 <template>
-  <form>
-    <div class="form-group">
-      <label for="name">Nome</label>
-      <input type="text" class="form-control" id="name" aria-describedby="emailHelp" v-model="nome">
-    </div>
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="text" class="form-control" id="email" v-model="email">
-    </div>
-    <div class="form-group">
-      <label for="address">Endereço</label>
-      <input type="email" class="form-control" id="address" v-model="endereco">
-    </div>
-    <div class="form-group">
-      <label for="sexo">Selecione o sexo</label>
-      <select name="Sexo" id="sexo" v-model="sexo">
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <input type="checkbox" id="ic" v-model="ic">
-      <label for="ic">Ic ativo?</label>
-    </div>
-    <button @click="criarPessoa">Enviar</button>
-    <button>
-      <router-link to="/">Voltar </router-link>
-    </button>
-  </form>
+  <div>
+    <form>
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" v-model="nome">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" v-model="email">
+      </div>
+      <div class="form-group">
+        <label for="address">Endereço</label>
+        <input type="text" class="form-control" id="address" v-model="endereco">
+      </div>
+      <div class="form-group">
+        <label for="sexo">Selecione o sexo</label>
+        <select name="Sexo" id="sexo" v-model="sexo">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" id="ic" v-model="ic">
+        <label for="ic">Ic ativo?</label>
+      </div>
+      <button @click="criarPessoa">Enviar</button>
+      <button>
+        <router-link to="/">Voltar </router-link>
+      </button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -44,7 +46,6 @@ export default {
       endereco: null,
       ic: null
     }
-
   },
   methods: {
     async criarPessoa(e) {
