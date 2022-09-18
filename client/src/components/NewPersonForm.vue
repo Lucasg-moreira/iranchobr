@@ -24,13 +24,14 @@
       <label for="ic">Ic ativo?</label>
     </div>
     <button @click="criarPessoa">Enviar</button>
-    <button><router-link to="/">Voltar </router-link></button>
+    <button>
+      <router-link to="/">Voltar </router-link>
+    </button>
   </form>
 </template>
 
 <script>
 import axios from 'axios';
-import VueRouter from 'vue-router';
 export default {
   name: 'NewPersonForm',
   data() {
@@ -44,7 +45,7 @@ export default {
 
   },
   methods: {
-     async criarPessoa(e) {
+    async criarPessoa(e) {
       e.preventDefault()
       const data = {
         no_pessoa: this.nome,
@@ -53,15 +54,15 @@ export default {
         sexo: this.sexo,
         ic_ativo: this.ic ? true : false
       }
-      const req = await axios.post("http://localhost:3000/pessoas/add", data)
+      await axios.post("http://localhost:3000/pessoas/add", data)
     }
   }
 }
 </script>
 
 <style>
-  button a {
-    text-decoration: none;
-    color: black;
-  }
+button a {
+  text-decoration: none;
+  color: black;
+}
 </style>

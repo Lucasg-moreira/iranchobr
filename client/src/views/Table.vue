@@ -1,9 +1,10 @@
 <template>
   <div>
-    <button @click="addPeoples()"><router-link to="/pessoas">Add</router-link>
- </button>
+    <button @click="addPeoples()">
+      <router-link to="/pessoas">Add</router-link>
+    </button>
     <h1>Tabela</h1>
-    <router-view/>
+    <router-view />
     <table class="table">
       <thead>
         <tr>
@@ -16,17 +17,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="pessoas in data">
-          <td>{{ pessoas.id }}</td>
-          <td>{{ pessoas.no_pessoa }}</td>
-          <td>{{ pessoas.no_email }}</td>
-          <td>{{ pessoas.endereco }}</td>
-          <td>{{ pessoas.sexo }}</td>
-          <td>{{ pessoas.ic_ativo }}</td>
+        <tr v-for="pessoa in data">
+          <td>{{ pessoa.id }}</td>
+          <td>{{ pessoa.no_pessoa }}</td>
+          <td>{{ pessoa.no_email }}</td>
+          <td>{{ pessoa.endereco }}</td>
+          <td>{{ pessoa.sexo }}</td>
+          <td>{{ pessoa.ic_ativo }}</td>
           <div>
             <button>Details</button>
             <button>Edit</button>
-            <button>Remove</button>
+            <button @click="remove(pessoa.id)">Remove</button>
           </div>
         </tr>
       </tbody>
@@ -36,27 +37,34 @@
 
 <script>
 import axios from 'axios';
+let back_end_api = "http://localhost:3000"
+
 export default {
   data() {
     return {
-      data: []
+      data: [],
+      id: null
     }
+  },
+  created() {
+    this.getPessoas();
   },
   methods: {
-    addPeoples() {
-
+    async remove(id) {
+     await axios.delete(`${back_end_api}/pessoas/${id}/remove`)
+      this.getPessoas();
+    },
+    async getPessoas() {
+      await axios.get(`${back_end_api}/pessoas`)
+        .then(response => {
+          const data = response.data;
+          this.data = data;
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
   },
-  async created() {
-    await axios.get('http://localhost:3000/pessoas')
-      .then(response => {
-        const data = response.data;
-        this.data = data;
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
 }
 </script>
 
