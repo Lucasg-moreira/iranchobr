@@ -18,4 +18,14 @@ export default class PessoasController {
     const pessoas = await Pessoas.findAll();
     return res.json(pessoas);
   }
+
+  static async remove(req, res) {
+    const id = req.params.id;
+    Pessoas.destroy({where: {
+      id: id
+    }})
+    return res.json({
+      "status": "ok"
+    })
+  }
 }
