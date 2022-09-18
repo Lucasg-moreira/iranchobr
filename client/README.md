@@ -1,4 +1,4 @@
-# irancho_crud
+# rancho_crud
 
 > A Vue.js project
 
