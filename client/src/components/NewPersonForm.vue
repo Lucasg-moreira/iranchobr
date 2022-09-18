@@ -31,9 +31,11 @@
 </template>
 
 <script>
+import AddAnimalsVue from './AddAnimals.vue';
 import axios from 'axios';
 export default {
   name: 'NewPersonForm',
+  components: { AddAnimalsVue },
   data() {
     return {
       nome: null,
