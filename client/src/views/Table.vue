@@ -56,7 +56,6 @@
 <script>
 import axios from 'axios';
 import AddAnimalsVue from '../components/AddAnimals.vue'
-import dayjs from 'dayjs'
 let back_end_api = "http://localhost:3000"
 
 export default {
