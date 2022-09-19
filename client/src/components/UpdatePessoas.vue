@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Editar</h1>
     <form>
+      <h4>Editar</h4>
       <div class="form-group">
         <label for="name">Nome</label>
         <input type="text" class="form-control" id="name" aria-describedby="emailHelp" v-model="no_pessoa">
@@ -16,17 +16,17 @@
       </div>
       <div class="form-group">
         <label for="sexo">Selecione o sexo</label>
-        <select name="Sexo" id="sexo" v-model="sexo">
+        <select name="Sexo" id="sexo" v-model="sexo" class="form-control">
           <option value="Male">Male</option>
           <option value="Female">Female</option>
         </select>
       </div>
-      <div class="form-group">
-        <input type="checkbox" id="ic" v-model="ic_ativo">
+      <div class="form-group check-container">
         <label for="ic">Ic ativo?</label>
+        <input type="checkbox" id="ic" class="form-control check" v-model="ic_ativo">
       </div>
-      <button @click="onSubmit()">Enviar</button>
-      <button>
+      <button class="btn btn-primary"  @click="onSubmit()">Editar</button>
+      <button class="btn btn-outline-secondary">
         <router-link to="/">Voltar</router-link>
       </button>
     </form>
@@ -72,3 +72,16 @@ export default {
   }
 }
 </script>
+
+<style>
+  .check {
+  max-width: 30px;
+  padding: 0;
+  margin: 0;
+  margin-left: 1em;
+}
+.check-container {
+  display: flex;
+  align-items: flex-end;
+}
+</style>

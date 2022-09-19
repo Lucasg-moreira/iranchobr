@@ -27,7 +27,8 @@
                 <td>{{ pessoa.no_email }}</td>
                 <td>{{ pessoa.endereco }}</td>
                 <td>{{ pessoa.sexo }}</td>
-                <td>{{ pessoa.ic_ativo }}</td>
+                <td v-if="pessoa.ic_ativo === true"><input type="checkbox" class="form-control" checked onclick="return false"></td>
+                <td v-else><input type="checkbox" class="form-control" readonly onclick="return false"></td>
                 <div>
                   <button @click="shareData(pessoa.id)" class="btn btn-outline-success btn-sm">Animais</button>
                   <button @click="update(pessoa.id)" class="btn btn-outline-info btn-sm">Edit</button>

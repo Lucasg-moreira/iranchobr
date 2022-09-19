@@ -18,7 +18,7 @@ const Animais = db.define("Animais", {
     allowNull: false,
   },
   sexo: {
-    type: DataTypes.CHAR,
+    type: DataTypes.CHAR(1),
     allowNull: false,
   },
   dt_nascimento: {
