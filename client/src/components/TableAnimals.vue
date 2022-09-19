@@ -40,9 +40,7 @@ export default {
   },
   methods: {
     async remove(id) {
-      const { user_id } = this.$route.params;
       await axios.delete(`${back_end_api}/animais/remove/${id}`);
-      console.log(this.$route.params);
       this.$router.go()
     },
   },
