@@ -33,4 +33,34 @@ export default class AnimalController {
     });
     return res.json({ status: "ok" });
   }
+  static async update(req, res) {
+    const { id, id_fazenda, no_animal, no_raca, sexo, dt_nascimento, vr_peso } =
+      req.body;
+    const animalData = {
+      id,
+      id_fazenda,
+      no_animal,
+      no_raca,
+      sexo,
+      dt_nascimento,
+      vr_peso,
+    };
+    await Animais.update(animalData, {
+      where: {
+        id: id,
+      },
+    });
+    return res.json({ status: "atualizado com sucesso!" });
+  }
 }
+
+// "id": 2,
+// 		"id_fazenda": "123123",
+// 		"no_animal": "asdfa",
+// 		"no_raca": "afsdasdf",
+// 		"sexo": "Female",
+// 		"dt_nascimento": "2022-09-06T00:00:00.000Z",
+// 		"vr_peso": 12,
+// 		"createdAt": "2022-09-18T22:22:40.000Z",
+// 		"updatedAt": "2022-09-18T22:22:40.000Z",
+// 		"PessoaId": 3
