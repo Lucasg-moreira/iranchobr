@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="animais.data.length > 0">
+    <div>
       <table class="table">
         <thead>
           <tr>

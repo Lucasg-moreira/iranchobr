@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row">
+    <div class="row ">
       <div class="col-md-4">
         <form>
           <div class="form-group">
@@ -30,15 +30,15 @@
               <option value="F">Female</option>
             </select>
           </div>
-          <button type="submit" @click="addAnimal()" class="btn btn-primary">Adcionar</button>
+          <button type="submit" @click="addAnimal()" class="btn btn-primary">Adicionar</button>
           <button class="btn btn-secondary">
             <router-link to="/">Voltar</router-link>
           </button>
         </form>
       </div>
-    <div class="col-md-8">
-      <TableAnimals :animais="animais" />
-    </div>
+      <div class="col-md" v-if="animais.data.length > 0">
+        <TableAnimals :animais="animais" />
+      </div>
     </div>
   </div>
 </template>
@@ -69,6 +69,7 @@ export default {
     let id = this.$route.params.user_id;
     const res = await axios.get(`${back_end_api}/animais/${id}`)
     this.animais = res;
+    console.log(this.animais);
   },
   methods: {
     async addAnimal() {

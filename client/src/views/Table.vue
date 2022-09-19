@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row">
+    <div class="row text-center">
       <div class="col-md-12">
         <div v-if="data.length > 0">
           <h1 class="text-center" style="color: #67613C">Tabela de pessoas</h1>
@@ -27,9 +27,12 @@
                 <td>{{ pessoa.no_email }}</td>
                 <td>{{ pessoa.endereco }}</td>
                 <td>{{ pessoa.sexo == "F" ? "Female": "Male" }}</td>
-                <td v-if="pessoa.ic_ativo === true"><input type="checkbox" class="form-control" checked
-                    onclick="return false"></td>
-                <td v-else><input type="checkbox" class="form-control" readonly onclick="return false"></td>
+                <td v-if="pessoa.ic_ativo === true">
+                  <input type="checkbox" class="form-control ic" checked onclick="return false">
+                </td>
+                <td v-else>
+                  <input type="checkbox" class="form-control ic" readonly onclick="return false">
+                </td>
                 <div>
                   <button @click="shareData(pessoa.id)" class="btn btn-outline-success btn-sm">Animais</button>
                   <button @click="update(pessoa.id)" class="btn btn-outline-info btn-sm">Edit</button>
@@ -39,14 +42,12 @@
             </tbody>
           </table>
         </div>
-        <div v-else>
-          <h1>Não tem nenhum item na tabela! Tente adicionar um!</h1>
-          <button class="btn btn-outline-dark btn-add align-self-end" @click="addPeoples()">
+        <div v-else class="none-item-wrapper text-center">
+          <h1>Não tem nenhum item na tabela! Adicione um.</h1>
+          <button class="btn btn-primary btn-add" @click="addPeoples()">
             Add
           </button>
         </div>
-      </div>
-      <div class="col-md-2">
       </div>
     </div>
   </div>
@@ -111,18 +112,19 @@ export default {
 .btn.btn-sm {
   margin-top: 0.5em;
 }
-
-.btn.btn-primary {
-  margin: auto
-}
-
 .btn-add {
   padding: 0.3em;
   min-width: 100px;
-  margin-left: 5em;
+  margin-top: 1em;
+}
+.none-item-wrapper {
+  margin: auto;
+}
+.ic {
+  width: 30px;
+  height: 30px;
+  margin: auto;
+  padding: 0px;
 }
 
-.btn-add a {
-  padding: 10px
-}
 </style>
