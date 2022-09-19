@@ -1,41 +1,49 @@
 <template>
   <div>
-    <button @click="addPeoples()">
-      <router-link to="/pessoas">Add</router-link>
-    </button>
-    <div v-if="data.length > 0">
-      <h1>Tabela</h1>
-      <router-view />
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Email</th>
-            <th scope="col">Endereço</th>
-            <th scope="col">sexo</th>
-            <th scope="col">ic</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="pessoa in data">
-            <td>{{ pessoa.id }}</td>
-            <td>{{ pessoa.no_pessoa }}</td>
-            <td>{{ pessoa.no_email }}</td>
-            <td>{{ pessoa.endereco }}</td>
-            <td>{{ pessoa.sexo }}</td>
-            <td>{{ pessoa.ic_ativo }}</td>
-            <div>
-              <button @click="shareData(pessoa.id)">Animais</button>
-              <button @click="update(pessoa.id)">Edit</button>
-              <button @click="remove(pessoa.id)">Remove</button>
-            </div>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div v-else>
-      <h1>Não tem nenhum item na tabela! Tente adicionar um!</h1>
+    <div class="row">
+      <div class="col-md-12">
+        <div v-if="data.length > 0">
+          <h1 class="text-center" style="color: #67613C">Tabela de pessoas</h1>
+          <table class="table table-striped text-center">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Endereço</th>
+                <th scope="col">sexo</th>
+                <th scope="col">ic</th>
+                <th scope="col">
+                  <button class="btn btn-outline-dark btn-add align-self-end" @click="addPeoples()">
+                    Add
+                  </button>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="pessoa in data">
+                <td>{{ pessoa.id }}</td>
+                <td>{{ pessoa.no_pessoa }}</td>
+                <td>{{ pessoa.no_email }}</td>
+                <td>{{ pessoa.endereco }}</td>
+                <td>{{ pessoa.sexo }}</td>
+                <td>{{ pessoa.ic_ativo }}</td>
+                <div>
+                  <button @click="shareData(pessoa.id)" class="btn btn-outline-success btn-sm">Animais</button>
+                  <button @click="update(pessoa.id)" class="btn btn-outline-info btn-sm">Edit</button>
+                  <button @click="remove(pessoa.id)" class="btn btn-outline-danger btn-sm">Remove</button>
+                </div>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div v-else>
+          <h1>Não tem nenhum item na tabela! Tente adicionar um!</h1>
+        </div>
+      </div>
+      <div class="col-md-2">
+
+      </div>
     </div>
   </div>
 </template>
@@ -74,21 +82,43 @@ export default {
         })
     },
     shareData(id) {
-      this.$router.push({name: "AddAnimals", params: {
-        user_id: id
-      }})
+      this.$router.push({
+        name: "AddAnimals", params: {
+          user_id: id
+        }
+      })
     },
     update(id) {
-      this.$router.push({name: "UpdatePessoas", params: {
-        id: id
-      }})
+      this.$router.push({
+        name: "UpdatePessoas", params: {
+          id: id
+        }
+      })
+    },
+    addPeoples() {
+      this.$router.push({
+        name: "NewPersonForm"
+      })
     }
   },
 }
 </script>
 <style>
-table,
-td {
-  padding: 1em;
+.btn.btn-sm {
+  margin-top: 0.5em;
+}
+
+.btn.btn-primary {
+  margin: auto
+}
+
+.btn-add {
+  padding: 0.3em;
+  min-width: 100px;
+  margin-left: 5em;
+}
+
+.btn-add a {
+  padding: 10px
 }
 </style>
