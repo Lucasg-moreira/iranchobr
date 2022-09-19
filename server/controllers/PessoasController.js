@@ -7,8 +7,8 @@ export default class PessoasController {
       no_pessoa,
       no_email,
       endereco,
-      sexo,
       ic_ativo,
+      sexo: sexo == "Male" ? "M" : "F"
     };
     const pessoa = await Pessoas.create(obj);
     return res.json(pessoa);
@@ -19,13 +19,40 @@ export default class PessoasController {
     return res.json(pessoas);
   }
 
+  static async showOne(req, res) {
+    const { id } = req.params
+    const pessoas = await Pessoas.findOne({where: {
+      id: id
+    }});
+    return res.json(pessoas);
+  }
+
   static async remove(req, res) {
     const id = req.params.id;
-    Pessoas.destroy({where: {
-      id: id
-    }})
+    Pessoas.destroy({
+      where: {
+        id: id,
+      },
+    });
     return res.json({
-      "status": "ok"
-    })
+      status: "ok",
+    });
+  }
+  static async update(req, res) {
+    const { id } = req.params;
+    const { no_pessoa, no_email, endereco, ic_ativo, sexo } = req.body;
+    const data = {
+      no_pessoa,
+      no_email,
+      endereco,
+      ic_ativo,
+      sexo
+    };
+    await Pessoas.update(data, {
+      where: {
+        id: id,
+      },
+    });
+    return res.json({ status: "atualizado com sucesso!" });
   }
 }

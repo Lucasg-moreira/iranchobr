@@ -21,5 +21,4 @@ const Pessoas = db.define("Pessoas", {
   },
   ic_ativo: { type: DataTypes.BOOLEAN },
 });
-
 export default Pessoas;
