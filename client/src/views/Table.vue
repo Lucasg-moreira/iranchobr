@@ -11,8 +11,8 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Email</th>
                 <th scope="col">Endereço</th>
-                <th scope="col">sexo</th>
-                <th scope="col">ic</th>
+                <th scope="col">Sexo</th>
+                <th scope="col">Ic</th>
                 <th scope="col">
                   <button class="btn btn-outline-dark btn-add align-self-end" @click="addPeoples()">
                     Add
@@ -26,7 +26,7 @@
                 <td>{{ pessoa.no_pessoa }}</td>
                 <td>{{ pessoa.no_email }}</td>
                 <td>{{ pessoa.endereco }}</td>
-                <td>{{ pessoa.sexo }}</td>
+                <td>{{ pessoa.sexo == "F" ? "Female": "Male" }}</td>
                 <td>{{ pessoa.ic_ativo }}</td>
                 <div>
                   <button @click="shareData(pessoa.id)" class="btn btn-outline-success btn-sm">Animais</button>
@@ -39,10 +39,12 @@
         </div>
         <div v-else>
           <h1>Não tem nenhum item na tabela! Tente adicionar um!</h1>
+          <button class="btn btn-outline-dark btn-add align-self-end" @click="addPeoples()">
+            Add
+          </button>
         </div>
       </div>
       <div class="col-md-2">
-
       </div>
     </div>
   </div>

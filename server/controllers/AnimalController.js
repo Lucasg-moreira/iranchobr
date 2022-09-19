@@ -14,7 +14,7 @@ export default class AnimalController {
       id_fazenda: req.body.id_fazenda,
       no_animal: req.body.no_animal,
       no_raca: req.body.no_raca,
-      sexo: req.body.sexo,
+      sexo: req.body.sexo == "Male" ? "M" : "F",
       dt_nascimento: req.body.dt_nascimento,
       vr_peso: req.body.vr_peso,
       PessoaId: user_id,

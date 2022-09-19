@@ -1,6 +1,5 @@
 import { DataTypes } from "sequelize";
 import db from "../db/conn.js";
-import Animais from "./Animais.js";
 
 const Lote = db.define("Animal_lote", {
   no_lote: {

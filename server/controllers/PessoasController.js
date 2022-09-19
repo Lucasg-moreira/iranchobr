@@ -7,8 +7,8 @@ export default class PessoasController {
       no_pessoa,
       no_email,
       endereco,
-      sexo,
       ic_ativo,
+      sexo: sexo == "Male" ? "M" : "F"
     };
     const pessoa = await Pessoas.create(obj);
     return res.json(pessoa);

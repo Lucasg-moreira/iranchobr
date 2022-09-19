@@ -18,7 +18,7 @@ const Animais = db.define("Animais", {
     allowNull: false,
   },
   sexo: {
-    type: DataTypes.CHAR,
+    type: DataTypes.STRING(1),
     allowNull: false,
   },
   dt_nascimento: {
@@ -30,7 +30,5 @@ const Animais = db.define("Animais", {
   }
 });
 Animais.belongsTo(Pessoas)
-
-
 
 export default Animais;

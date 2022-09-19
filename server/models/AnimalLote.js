@@ -1,6 +1,5 @@
 import { DataTypes } from "sequelize";
 import db from "../db/conn.js";
-import Animais from "./Animais.js";
 
 const AnimalLote = db.define("Animal_x_lote", {
   dt_entrada: {
