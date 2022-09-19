@@ -4,7 +4,7 @@ import Pessoas from "../models/Pessoas.js";
 export default class AnimalController {
   static async index(req, res) {
     const { user_id } = req.params;
-    const animais = await Animais.findOne({where: { PessoaId: user_id }})
+    const animais = await Animais.findAll({ where: { PessoaId: user_id } });
     return res.json(animais);
   }
 
@@ -23,4 +23,26 @@ export default class AnimalController {
     const animal = await Animais.create(obj);
     return res.json(animal);
   }
+
+  static async remove(req, res) {
+    const { id } = req.params;
+    await Animais.destroy({
+      where: {
+        id: id,
+      },
+    });
+    return res.json({ status: "ok" });
+  }
+ 
 }
+
+// "id": 2,
+// 		"id_fazenda": "123123",
+// 		"no_animal": "asdfa",
+// 		"no_raca": "afsdasdf",
+// 		"sexo": "Female",
+// 		"dt_nascimento": "2022-09-06T00:00:00.000Z",
+// 		"vr_peso": 12,
+// 		"createdAt": "2022-09-18T22:22:40.000Z",
+// 		"updatedAt": "2022-09-18T22:22:40.000Z",
+// 		"PessoaId": 3
