@@ -4,7 +4,7 @@ import Pessoas from "../models/Pessoas.js";
 export default class AnimalController {
   static async index(req, res) {
     const { user_id } = req.params;
-    const animais = await Animais.findAll({where: { PessoaId: user_id }})
+    const animais = await Animais.findAll({ where: { PessoaId: user_id } });
     return res.json(animais);
   }
 
@@ -22,5 +22,15 @@ export default class AnimalController {
 
     const animal = await Animais.create(obj);
     return res.json(animal);
+  }
+
+  static async remove(req, res) {
+    const { id } = req.params;
+    await Animais.destroy({
+      where: {
+        id: id,
+      },
+    });
+    return res.json({ status: "ok" });
   }
 }

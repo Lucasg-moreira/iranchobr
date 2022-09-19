@@ -26,7 +26,7 @@
             <td>{{ pessoa.sexo }}</td>
             <td>{{ pessoa.ic_ativo }}</td>
             <div>
-              <button @click="shareData(pessoa.id)">Add Animais</button>
+              <button @click="shareData(pessoa.id)">Animais</button>
               <button>Edit</button>
               <button @click="remove(pessoa.id)">Remove</button>
             </div>
