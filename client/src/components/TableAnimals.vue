@@ -10,6 +10,7 @@
             <th scope="col">Raça</th>
             <th scope="col">Sexo</th>
             <th scope="col">Data de nascimento</th>
+            <th> </th>
           </tr>
         </thead>
         <tbody>
@@ -20,7 +21,7 @@
             <td>{{ animal.no_raca }}</td>
             <td>{{ animal.sexo }}</td>
             <td>{{ animal.dt_nascimento }}</td>
-            <button @click="remove(animal.id)" class="btn btn-danger">Remover</button>
+            <button @click="remove(animal.id)" class="btn btn-danger btn-sm">Remover</button>
           </tr>
         </tbody>
       </table>
@@ -39,9 +40,13 @@ export default {
   },
   methods: {
     async remove(id) {
-      await axios.delete(`${back_end_api}/animais/remove/${id}`)
+      const { user_id } = this.$route.params;
+      await axios.delete(`${back_end_api}/animais/remove/${id}`);
+      console.log(this.$route.params);
+      this.$router.go()
     },
-  }
+  },
+
 }
 </script>
 
