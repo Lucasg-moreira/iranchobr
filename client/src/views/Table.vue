@@ -27,7 +27,7 @@
             <td>{{ pessoa.ic_ativo }}</td>
             <div>
               <button @click="shareData(pessoa.id)">Animais</button>
-              <button>Edit</button>
+              <button @click="update(pessoa.id)">Edit</button>
               <button @click="remove(pessoa.id)">Remove</button>
             </div>
           </tr>
@@ -76,6 +76,11 @@ export default {
     shareData(id) {
       this.$router.push({name: "AddAnimals", params: {
         user_id: id
+      }})
+    },
+    update(id) {
+      this.$router.push({name: "UpdatePessoas", params: {
+        id: id
       }})
     }
   },

@@ -66,7 +66,6 @@ export default {
     let id = this.$route.params.user_id;
     const res = await axios.get(`${back_end_api}/animais/${id}`)
     this.animais = res;
-    console.log(this.animais.length);
   },
   methods: {
     async addAnimal() {

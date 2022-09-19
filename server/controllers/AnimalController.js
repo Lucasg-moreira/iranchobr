@@ -33,25 +33,7 @@ export default class AnimalController {
     });
     return res.json({ status: "ok" });
   }
-  static async update(req, res) {
-    const { id, id_fazenda, no_animal, no_raca, sexo, dt_nascimento, vr_peso } =
-      req.body;
-    const animalData = {
-      id,
-      id_fazenda,
-      no_animal,
-      no_raca,
-      sexo,
-      dt_nascimento,
-      vr_peso,
-    };
-    await Animais.update(animalData, {
-      where: {
-        id: id,
-      },
-    });
-    return res.json({ status: "atualizado com sucesso!" });
-  }
+ 
 }
 
 // "id": 2,

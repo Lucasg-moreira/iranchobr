@@ -20,8 +20,7 @@
             <td>{{ animal.no_raca }}</td>
             <td>{{ animal.sexo }}</td>
             <td>{{ animal.dt_nascimento }}</td>
-            <button>Edit</button>
-            <button @click="remove(animal.id)">Remover</button>
+            <button @click="remove(animal.id)" class="btn btn-danger">Remover</button>
           </tr>
         </tbody>
       </table>
@@ -32,7 +31,6 @@
 
 <script>
 import axios from 'axios';
-
 let back_end_api = "http://localhost:3000"
 export default {
   name: 'TableAnimals',
@@ -42,13 +40,13 @@ export default {
   methods: {
     async remove(id) {
       await axios.delete(`${back_end_api}/animais/remove/${id}`)
-    }
+    },
   }
 }
 </script>
 
 <style>
-  .table {
-    margin-top: 2em;
-  }
+.table {
+  margin-top: 2em;
+}
 </style>

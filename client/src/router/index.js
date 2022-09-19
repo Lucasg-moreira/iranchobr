@@ -19,9 +19,14 @@ export default new Router({
       component: () => import('../components/NewPersonForm.vue'),
     },
     {
+      path: "/pessoas/update",
+      name: "UpdatePessoas",
+      component: () => import('../components/UpdatePessoas.vue')
+    },
+    {
       path: "/animais/:user_id",
       name: "AddAnimals",
       component: () => import('../components/AddAnimals.vue')
-    }
+    },
   ]
 });
