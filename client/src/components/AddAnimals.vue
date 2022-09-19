@@ -69,7 +69,6 @@ export default {
     let id = this.$route.params.user_id;
     const res = await axios.get(`${back_end_api}/animais/${id}`)
     this.animais = res;
-    console.log(this.animais);
   },
   methods: {
     async addAnimal() {
@@ -78,7 +77,6 @@ export default {
       this.clearFields();
     },
     clearFields() {
-      this.$data.animais = null;
       this.$data.dt_nascimento = null;
       this.$data.id_fazenda = null;
       this.$data.no_animal = null;

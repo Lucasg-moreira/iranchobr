@@ -56,6 +56,7 @@
 <script>
 import axios from 'axios';
 import AddAnimalsVue from '../components/AddAnimals.vue'
+import dayjs from 'dayjs'
 let back_end_api = "http://localhost:3000"
 
 export default {
@@ -112,19 +113,21 @@ export default {
 .btn.btn-sm {
   margin-top: 0.5em;
 }
+
 .btn-add {
   padding: 0.3em;
   min-width: 100px;
   margin-top: 1em;
 }
+
 .none-item-wrapper {
   margin: auto;
 }
+
 .ic {
   width: 30px;
   height: 30px;
   margin: auto;
   padding: 0px;
 }
-
 </style>

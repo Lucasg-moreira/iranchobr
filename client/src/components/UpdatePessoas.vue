@@ -16,7 +16,7 @@
       </div>
       <div class="form-group">
         <label for="sexo">Selecione o sexo</label>
-        <select name="Sexo" id="sexo" v-model="sexo" class="form-control">
+        <select id="sexo" v-model="sexo" class="form-control">
           <option value="M">Male</option>
           <option value="F">Female</option>
         </select>
@@ -25,7 +25,7 @@
         <label for="ic">Ic ativo?</label>
         <input type="checkbox" id="ic" class="form-control check" v-model="ic_ativo">
       </div>
-      <button class="btn btn-primary"  @click="onSubmit()">Editar</button>
+      <button class="btn btn-primary" @click="onSubmit()" type="button">Editar</button>
       <button class="btn btn-outline-secondary">
         <router-link to="/">Voltar</router-link>
       </button>
@@ -41,7 +41,6 @@ export default {
   name: "UpdatePessoas",
   data() {
     return {
-      id: null,
       no_pessoa: null,
       no_email: null,
       endereco: null,
@@ -62,24 +61,28 @@ export default {
     this.endereco = data.endereco;
     this.sexo = data.sexo;
     this.ic_ativo = data.ic_ativo;
-    this.id = id;
   },
   methods: {
     async onSubmit() {
-      await axios.post(`${back_end_api}/pessoas/update`, this.$data);
-      this.$router.push('/')
+      let id = this.$route.params.id;
+      const res = await axios.post(`${back_end_api}/pessoas/${id}/update`, this.$data);
+      if (res.status === 200) {
+        this.$router.push("/")
+      }
+
     }
   }
 }
 </script>
 
 <style>
-  .check {
+.check {
   max-width: 30px;
   padding: 0;
   margin: 0;
   margin-left: 1em;
 }
+
 .check-container {
   display: flex;
   align-items: flex-end;

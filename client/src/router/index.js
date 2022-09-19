@@ -19,7 +19,7 @@ export default new Router({
       component: () => import('../components/NewPersonForm.vue'),
     },
     {
-      path: "/pessoas/update",
+      path: "/pessoas/:id/update",
       name: "UpdatePessoas",
       component: () => import('../components/UpdatePessoas.vue')
     },

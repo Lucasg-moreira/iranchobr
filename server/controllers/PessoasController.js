@@ -39,9 +39,9 @@ export default class PessoasController {
     });
   }
   static async update(req, res) {
-    const { id, no_pessoa, no_email, endereco, ic_ativo, sexo } = req.body;
+    const { id } = req.params;
+    const { no_pessoa, no_email, endereco, ic_ativo, sexo } = req.body;
     const data = {
-      id,
       no_pessoa,
       no_email,
       endereco,

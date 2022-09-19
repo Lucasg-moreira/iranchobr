@@ -7,7 +7,7 @@ const routes = express.Router();
 routes.get("/", PessoasController.show)
 routes.get("/:id", PessoasController.showOne)
 routes.post("/add", PessoasController.store)
-routes.post("/update", PessoasController.update)
+routes.post("/:id/update", PessoasController.update)
 routes.delete("/:id/remove", PessoasController.remove)
 
 export default routes;

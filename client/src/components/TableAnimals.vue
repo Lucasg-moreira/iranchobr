@@ -14,13 +14,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="animal in animais.data">
+          <tr v-for="animal in dataAnimal.data">
             <td>{{ animal.id }}</td>
             <td>{{ animal.no_animal }}</td>
             <td>{{ animal.id_fazenda }}</td>
             <td>{{ animal.no_raca }}</td>
             <td>{{ animal.sexo }}</td>
-            <td>{{ animal.dt_nascimento }}</td>
+            <td>{{ formatDate(animal.dt_nascimento) }}</td>
             <button @click="remove(animal.id)" class="btn btn-danger btn-sm">Remover</button>
           </tr>
         </tbody>
@@ -32,19 +32,28 @@
 
 <script>
 import axios from 'axios';
+import dayjs from 'dayjs';
 let back_end_api = "http://localhost:3000"
 export default {
   name: 'TableAnimals',
+  data() {
+    return { dataAnimal: this.animais }
+  },
   props: {
     animais: []
   },
   methods: {
     async remove(id) {
       await axios.delete(`${back_end_api}/animais/remove/${id}`);
-      this.$router.go()
+      const paramsId = this.$route.params.user_id;
+      const res = await axios.get(`${back_end_api}/animais/${paramsId}`);
+      this.$data.dataAnimal = res;
     },
-  },
-
+    formatDate(dateString) {
+      const date = dayjs(dateString);
+      return date.format('DD/MM/YYYY');
+    }
+  }
 }
 </script>
 
