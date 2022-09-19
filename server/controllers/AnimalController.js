@@ -19,11 +19,10 @@ export default class AnimalController {
       vr_peso: req.body.vr_peso,
       PessoaId: user_id,
     };
-
+    
     const animal = await Animais.create(obj);
     return res.json(animal);
   }
-
   static async remove(req, res) {
     const { id } = req.params;
     await Animais.destroy({
@@ -33,16 +32,4 @@ export default class AnimalController {
     });
     return res.json({ status: "ok" });
   }
- 
 }
-
-// "id": 2,
-// 		"id_fazenda": "123123",
-// 		"no_animal": "asdfa",
-// 		"no_raca": "afsdasdf",
-// 		"sexo": "Female",
-// 		"dt_nascimento": "2022-09-06T00:00:00.000Z",
-// 		"vr_peso": 12,
-// 		"createdAt": "2022-09-18T22:22:40.000Z",
-// 		"updatedAt": "2022-09-18T22:22:40.000Z",
-// 		"PessoaId": 3

@@ -22,7 +22,7 @@ app.use(express.json());
 app.use("/pessoas", routesPessoas);
 app.use("/animais", routesAnimal);
 conn
-  .sync({force: true})
+  .sync()
   .then(app.listen(3000))
   .catch((err) => {
     if (err) throw err;
