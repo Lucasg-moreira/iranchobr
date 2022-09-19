@@ -6,7 +6,6 @@ import router from './router'
 import Layout from 'bootstrap-vue/esm/'
 Vue.config.productionTip = false
 Vue.use(Layout);
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
