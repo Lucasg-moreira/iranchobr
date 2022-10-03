@@ -19,8 +19,8 @@
           <div class="form-group">
             <label for="sexo">Selecione o sexo</label>
             <select name="sexo" id="sexo" v-model="sexo" class="form-control">
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
             </select>
           </div>
           <div class="form-group check-container">
@@ -39,8 +39,8 @@
 </template>
 
 <script>
-import AddAnimalsVue from './AddAnimals.vue';
 import axios from 'axios';
+import AddAnimalsVue from './AddAnimals.vue';
 import { BACK_END_API } from '../../config/dev.env.js'
 
 export default {
@@ -65,7 +65,7 @@ export default {
         sexo: this.sexo,
         ic_ativo: this.ic ? true : false
       }
-      await axios.post("http://localhost:3000/pessoas/add", data)
+      await axios.post(`${BACK_END_API}/pessoas/add`, data)
       this.$router.push("/");
     }
   }

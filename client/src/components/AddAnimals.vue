@@ -47,7 +47,7 @@
 <script>
 import axios from 'axios';
 import TableAnimals from './TableAnimals.vue'
-let back_end_api = "http://localhost:3000"
+import { BACK_END_API } from '../../config/dev.env.js';
 
 export default {
   name: 'AddAnimals',
@@ -66,23 +66,32 @@ export default {
     TableAnimals
   },
   async created() {
-    let id = this.$route.params.user_id;
-    const res = await axios.get(`${back_end_api}/animais/${id}`)
-    this.animais = res;
+    const { user_id } = this.$route.params;
+    try {
+      const res = await axios.get(`${BACK_END_API}/animais/${user_id}`)
+      this.animais = res;
+    } catch (err) {
+      console.log(err);
+    }
   },
   methods: {
     async addAnimal() {
-      let id = this.$route.params.user_id;
-      await axios.post(`${back_end_api}/animais/add/${id}`, this.$data);
-      this.clearFields();
+      const { user_id } = this.$route.params;
+      try {
+        const res = await axios.post(`${BACK_END_API}/animais/add/${user_id}`, this.$data);
+        this.animais = res.data;
+        this.clearFields();
+      } catch (err) {
+        console.log(err)
+      }
     },
     clearFields() {
-      this.$data.dt_nascimento = null;
-      this.$data.id_fazenda = null;
-      this.$data.no_animal = null;
-      this.$data.no_raca = null;
-      this.$data.sexo = null;
-      this.$data.vr_peso = null;
+      this.$data.dt_nascimento = undefined;
+      this.$data.id_fazenda = undefined;
+      this.$data.no_animal = undefined;
+      this.$data.no_raca = undefined;
+      this.$data.sexo = undefined;
+      this.$data.vr_peso = undefined;
     }
   }
 }

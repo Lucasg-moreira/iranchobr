@@ -33,7 +33,6 @@ export default class AnimalController {
   }
   static async remove(req, res) {
     const { id } = req.params;
-
     try {
       await Animais.destroy({
         where: {

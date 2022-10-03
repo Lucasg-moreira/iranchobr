@@ -44,10 +44,14 @@ export default {
   },
   methods: {
     async remove(id) {
-      await axios.delete(`${BACK_END_API}/animais/remove/${id}`);
-      const paramsId = this.$route.params.user_id;
-      const res = await axios.get(`${BACK_END_API}/animais/${paramsId}`);
-      this.$data.dataAnimal = res;
+      const { user_id } = this.$route.params;
+      try {
+        await axios.delete(`${BACK_END_API}/animais/remove/${id}`);
+        const res = await axios.get(`${BACK_END_API}/animais/${user_id}`);
+        this.$data.dataAnimal = res;
+      } catch (err) {
+        console.log(err);
+      }
     },
     formatDate(dateString) {
       const date = dayjs(dateString);
@@ -56,7 +60,6 @@ export default {
   }
 }
 </script>
-
 <style>
 .table {
   margin-top: 2em;

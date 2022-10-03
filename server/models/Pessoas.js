@@ -16,7 +16,7 @@ const Pessoas = db.define("Pessoas", {
     allowNull: false,
   },
   sexo: {
-    type: DataTypes.CHAR,
+    type: DataTypes.STRING(1),
     allowNull: false,
   },
   ic_ativo: { type: DataTypes.BOOLEAN },

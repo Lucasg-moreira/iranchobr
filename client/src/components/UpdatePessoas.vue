@@ -35,8 +35,7 @@
 
 <script>
 import axios from 'axios';
-let back_end_api = "http://localhost:3000"
-
+import { BACK_END_API } from '../../config/dev.env.js'
 export default {
   name: "UpdatePessoas",
   data() {
@@ -53,7 +52,7 @@ export default {
   },
   async created() {
     const id = this.$route.params.id;
-    const res = await axios.get(`${back_end_api}/pessoas/${id}`)
+    const res = await axios.get(`${BACK_END_API}/pessoas/${id}`)
     const data = res.data
 
     this.no_pessoa = data.no_pessoa;
@@ -64,8 +63,8 @@ export default {
   },
   methods: {
     async onSubmit() {
-      let id = this.$route.params.id;
-      const res = await axios.post(`${back_end_api}/pessoas/${id}/update`, this.$data);
+      const { id } = this.$route.params;
+      const res = await axios.post(`${BACK_END_API}/pessoas/${id}/update`, this.$data);
       if (res.status === 200) {
         this.$router.push("/")
       }
