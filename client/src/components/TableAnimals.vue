@@ -33,7 +33,7 @@
 <script>
 import axios from 'axios';
 import dayjs from 'dayjs';
-let back_end_api = "http://localhost:3000"
+import { BACK_END_API } from '../../config/dev.env.js'
 export default {
   name: 'TableAnimals',
   data() {
@@ -44,9 +44,9 @@ export default {
   },
   methods: {
     async remove(id) {
-      await axios.delete(`${back_end_api}/animais/remove/${id}`);
+      await axios.delete(`${BACK_END_API}/animais/remove/${id}`);
       const paramsId = this.$route.params.user_id;
-      const res = await axios.get(`${back_end_api}/animais/${paramsId}`);
+      const res = await axios.get(`${BACK_END_API}/animais/${paramsId}`);
       this.$data.dataAnimal = res;
     },
     formatDate(dateString) {

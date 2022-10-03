@@ -41,6 +41,8 @@
 <script>
 import AddAnimalsVue from './AddAnimals.vue';
 import axios from 'axios';
+import { BACK_END_API } from '../../config/dev.env.js'
+
 export default {
   name: 'NewPersonForm',
   components: { AddAnimalsVue },

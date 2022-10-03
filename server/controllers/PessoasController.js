@@ -3,40 +3,60 @@ import Pessoas from "../models/Pessoas.js";
 export default class PessoasController {
   static async store(req, res) {
     const { no_pessoa, no_email, endereco, sexo, ic_ativo } = req.body;
-    let obj = {
+    let data = {
       no_pessoa,
       no_email,
       endereco,
       ic_ativo,
-      sexo: sexo == "Male" ? "M" : "F"
+      sexo,
     };
-    const pessoa = await Pessoas.create(obj);
-    return res.json(pessoa);
+    try {
+      const pessoa = await Pessoas.create(data);
+      return res.json(pessoa);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   static async show(req, res) {
-    const pessoas = await Pessoas.findAll();
-    return res.json(pessoas);
+    try {
+      const pessoas = await Pessoas.findAll();
+      return res.json(pessoas);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   static async showOne(req, res) {
-    const { id } = req.params
-    const pessoas = await Pessoas.findOne({where: {
-      id: id
-    }});
-    return res.json(pessoas);
+    const { id } = req.params;
+
+    try {
+      const pessoas = await Pessoas.findOne({
+        where: {
+          id: id,
+        },
+      });
+      return res.json(pessoas);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   static async remove(req, res) {
-    const id = req.params.id;
-    Pessoas.destroy({
-      where: {
-        id: id,
-      },
-    });
-    return res.json({
-      status: "ok",
-    });
+    const { id } = req.params;
+
+    try {
+      Pessoas.destroy({
+        where: {
+          id: id,
+        },
+      });
+      return res.json({
+        status: "ok",
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
   static async update(req, res) {
     const { id } = req.params;
@@ -46,13 +66,17 @@ export default class PessoasController {
       no_email,
       endereco,
       ic_ativo,
-      sexo
+      sexo,
     };
-    await Pessoas.update(data, {
-      where: {
-        id: id,
-      },
-    });
-    return res.json({ status: "atualizado com sucesso!" });
+    try {
+      await Pessoas.update(data, {
+        where: {
+          id: id,
+        },
+      });
+      return res.json({ status: "atualizado com sucesso!" });
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
