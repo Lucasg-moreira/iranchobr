@@ -1,5 +1,4 @@
 import Animais from "../models/Animais.js";
-import Pessoas from "../models/Pessoas.js";
 
 export default class AnimalController {
   static async index(req, res) {
@@ -30,6 +29,6 @@ export default class AnimalController {
         id: id,
       },
     });
-    return res.json({ status: "ok" });
+    return res.json({ status: "Item removido" });
   }
 }

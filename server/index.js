@@ -8,7 +8,7 @@ import Lote from "./models/Lote.js";
 import AnimalLote from "./models/AnimalLote.js";
 
 import routesPessoas from "./routes/routesPessoas.js";
-import routesAnimal from "./routes/routerAnimal.js";
+import routesAnimal from "./routes/routesAnimais.js";
 
 const app = express();
 app.use(
@@ -21,9 +21,11 @@ app.use(cors());
 app.use(express.json());
 app.use("/pessoas", routesPessoas);
 app.use("/animais", routesAnimal);
+
 conn
   .sync()
-  .then(app.listen(3000))
+  .then(
+    app.listen(3000))
   .catch((err) => {
     if (err) throw err;
   });
